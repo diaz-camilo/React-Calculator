@@ -62,7 +62,6 @@ p {
 .parent {
   width: fit-content;
   display: grid;
-  grid-template-columns: calc((var(--column-size) * 3) + (var(--gap) * 2));
   margin: 0 auto;
   border-radius: 5%;
 }
