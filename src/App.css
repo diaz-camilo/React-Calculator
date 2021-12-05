@@ -1,0 +1,206 @@
+/* 
+Unit	Name	                Equivalent to
+cm	  Centimeters	          1cm = 38px = 25/64in
+mm	  Millimeters	          1mm = 1/10th of 1cm
+Q	    Quarter-millimeters	  1Q = 1/40th of 1cm
+in	  Inches	              1in = 2.54cm = 96px
+pc	  Picas	                1pc = 1/6th of 1in
+pt	  Points	              1pt = 1/72th of 1in
+px	  Pixels	              1px = 1/96th of 1in
+
+Unit	Relative to
+em	  Font size of the parent, in the case of typographical properties like font-size, and font size of the element itself, in the case of other properties like width.
+ex	  x-height of the element's font.
+ch	  The advance measure (width) of the glyph "0" of the element's font.
+rem	  Font size of the root element.
+lh	  Line height of the element.
+vw	  1% of the viewport's width.
+vh	  1% of the viewport's height.
+vmin	1% of the viewport's smaller dimension.
+vmax	1% of the viewport's larger dimension.
+*/
+
+:root {
+  --column-size: 10vh;
+  --gap: 1vh;
+  font-size: 2vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+}
+
+body,
+#root {
+  min-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 65rem;
+}
+
+p {
+  text-align: center;
+}
+
+.parent {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: calc((var(--column-size) * 3) + (var(--gap) * 2));
+  margin: 0 auto;
+  border-radius: 5%;
+}
+
+.app-handlebar {
+  min-height: 1.5rem;
+  background-image: linear-gradient(white, gray);
+  border-radius: 5% 5% 0 0;
+  position: relative;
+}
+
+.close-max-min {
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0.5rem;
+  top: 0.25rem;
+  left: 0.25rem;
+}
+
+.close-max-min div {
+  width: 0.8rem;
+  height: 0.8rem;
+
+  border-radius: 100%;
+}
+
+.close {
+  background-color: rgb(255, 84, 82);
+  border: 1px solid rgb(165, 53, 51);
+}
+.min {
+  background-color: rgb(255, 180, 59);
+  border: 1px solid rgb(158, 111, 35);
+}
+.max {
+  background-color: rgb(0, 196, 66);
+  border: 1px solid rgb(0, 110, 37);
+}
+
+.title {
+  margin: 0.2rem auto;
+  display: block;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.grid-container {
+  background-color: #004354;
+  width: fit-content;
+  display: grid;
+  grid-template-columns:
+    var(--column-size) var(--column-size) var(--column-size)
+    var(--column-size);
+  grid-template-rows: var(--column-size) var(--column-size) var(--column-size) var(
+      --column-size
+    );
+  gap: var(--gap);
+  align-items: stretch;
+  justify-items: stretch;
+  margin: 0 auto;
+  padding: calc(var(--gap) * 2);
+  border-radius: 0% 0% 5% 5%;
+}
+
+.grid-item {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid black;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.operator {
+  background-color: rgb(250, 192, 153);
+}
+
+.grid-item span {
+  align-self: center;
+  font-size: 2rem;
+}
+
+.app-input {
+  padding: 1rem;
+  margin: 0 auto;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100%;
+  background-color: #384043;
+}
+
+.app-input input {
+  width: calc(var(--column-size) * 4);
+  height: 3rem;
+  margin: 0 auto;
+  border-radius: 10%;
+  font-size: 1.5rem;
+  background-color: rgb(0, 0, 0, 0);
+  border: 1px solid rgb(0, 0, 0, 0);
+  color: rgb(0, 0, 0, 0);
+}
+
+input,
+input:focus,
+input:active {
+  background-color: rgb(0, 0, 0, 0);
+  border: 1px solid rgb(0, 0, 0, 0);
+  color: rgb(0, 0, 0, 0);
+  outline: none;
+  z-index: 10;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-field-replacement {
+  position: absolute;
+  border: 2px solid whitesmoke;
+  top: 1rem;
+  left: 1.5rem;
+  width: calc(var(--column-size) * 4);
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.input-field-replacement div {
+  display: block;
+  margin-top: 0.4rem;
+  margin-left: 0.4rem;
+  color: whitesmoke;
+}
+
+.bad-char {
+  color: red;
+}
